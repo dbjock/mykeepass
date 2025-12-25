@@ -1,0 +1,42 @@
+# TOML format
+
+[logconfig]
+version = 1
+disable_existing_loggers = false
+
+[logconfig.formatters.simple_format]
+format = "%(asctime)s %(levelname)s - %(message)s"
+
+[logconfig.formatters.detail_format]
+format = "%(asctime)s %(levelname)s [%(name)s:%(funcName)s] - %(message)s"
+
+[logconfig.handlers.fileHandler]
+class = "logging.handlers.RotatingFileHandler"
+maxBytes = 1048576 # 1MB
+backupCount = 1
+formatter = "detail_format"
+# WARNING ####
+# !DEBUG will expose notes and username field data to log
+# WARNING ####
+level = "INFO"
+filename = "logs/mykeepass.log"
+
+[logconfig.handlers.fulldebug]
+class = "logging.handlers.RotatingFileHandler"
+maxBytes = 1048576 # 1MB
+backupCount = 1
+formatter = "detail_format"
+# WARNING ####
+# !DEBUG will expose notes and username field data to log
+# WARNING ####
+level = "DEBUG"
+filename = "logs/mykeepass-debug.log"
+
+[logconfig.handlers.ether]
+class = "logging.NullHandler"
+formatter = "simple_format"
+level = "INFO"
+
+[logconfig.root]
+level = "DEBUG"
+handlers = ["fileHandler"]
