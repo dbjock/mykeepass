@@ -62,12 +62,9 @@ cmdHelper = {
         'entry': None,
         'group': None,
     },
-    'find': {
-        'entry': {
+    'find':{
             'title': None,
             'username': None
-        },
-        'group': None,
     },
     'getpass': None,
     'show':  {
@@ -398,8 +395,9 @@ def helpAction(cmd=None) -> None:
             print("find: Used to find entries in the database")
             print("Usage: find ['title' | 'username'] <string to find>")
             print(" Example: To find all entries with Strongmail UI in the title")
-            print("   find entry Strongmail UI")
+            print("   find title Strongmail UI")
             print("   Will find all records where the title field contains `Strongmail UI` case insensitve")
+            print("  NOTE: quotes are not used.")
             print("Results will be displayed on the console")
         case 'chgpwd':
             print("chgpwd: Used to change the database password ")
